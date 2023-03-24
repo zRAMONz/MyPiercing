@@ -1,0 +1,32 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 2px solid #DFFAFA;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #DFFAFA;
+}
+
+.color-select {
+  width: 100%;
+}
+
+.size-input {
+  width: 80px;
+}
+
+.total-price {
+  font-weight: bold;
+  text-align: right;
+}
+.large-button {
+  width: 30px;
+  height: 50px;
+  font-size: 18px;
+}
