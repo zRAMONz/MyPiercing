@@ -1,0 +1,51 @@
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Cor</th>
+      <th>Medida</th>
+      <th>Uni</th>
+      <th>Preço</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="product-row">
+<td><img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/160260706/4e1b394f47.jpg" alt="Ferradura" width="100">Ferradura</td>
+      <td>
+        <select class="color-select">
+          <option value="">Cor</option>
+          <option value="8.50">Natural</option>
+          <option value="10.50">Gold</option>
+          <option value="11.50">Black</option>
+        </select>
+      </td>
+      <td>
+        <div>
+          <label>1.2 x 6 mm:</label>
+          <input type="number" value="0" class="size-input" min="0">
+        </div>
+        <div>
+          <label>1.2 x 8 mm:</label>
+          <input type="number" value="0" class="size-input" min="0">
+        </div>
+        <div>
+          <label>1.2 x 10 mm:</label>
+          <input type="number" value="0" class="size-input" min="0">
+        </div>
+      </td>
+      <td class="quantity-cell">0</td>
+      <td class="price-cell"></td>
+      <td>
+        <button class="add-row">+</button>
+        <button class="remove-row">-</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="summary">
+  <h3>Resumo da Compra</h3>
+  <ul class="product-list"></ul>
+  <div class="total-price"></div>
+</div>
