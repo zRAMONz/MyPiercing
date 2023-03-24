@@ -55,11 +55,10 @@ th {
     max-width: 100%; /* ajuste a largura máxima da tabela para dispositivos móveis */
   }
 
-  .product-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* permita que as linhas de produtos quebrem para dispositivos móveis */
-  }
+.product-row {
+  display: block;
+  margin-bottom: 16px;
+}
 
   .product-row img {
     max-width: 100%;
