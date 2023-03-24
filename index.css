@@ -1,7 +1,6 @@
 table {
   border-collapse: collapse;
   width: 100%;
-  max-width: 800px; /* ajuste a largura máxima da tabela para dispositivos móveis */
   margin: 0 auto; /* centralize a tabela na tela */
 }
 
