@@ -1,6 +1,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  max-width: 800px; /* ajuste a largura máxima da tabela para dispositivos móveis */
   margin: 0 auto; /* centralize a tabela na tela */
 }
 
@@ -83,4 +84,30 @@ th {
     padding: 12px 16px;
     margin-top: 16px;
   }
+}
+/* Aumentar tamanho dos textos */
+th, td, input, button {
+  font-size: 18px;
+}
+
+/* Aumentar tamanho das caixas de texto */
+.size-input {
+  width: 60px;
+  height: 30px;
+}
+
+/* Aumentar tamanho dos botões */
+.add-row, .remove-row {
+  font-size: 20px;
+  padding: 10px 16px;
+}
+
+/* Centralizar imagem e nome do modelo */
+.product-row img {
+  display: block;
+  margin: 0 auto;
+}
+
+.product-name {
+  text-align: center;
 }
