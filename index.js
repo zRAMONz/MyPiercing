@@ -1,112 +1,146 @@
-  // Selecionar elementos da tabela
-  const productRow = document.querySelector('.product-row');
-  const colorSelect = document.querySelector('.color-select');
-  const sizeInputs = document.querySelectorAll('.size-input');
-  const quantityCell = document.querySelector('.quantity-cell');
-  const priceCell = document.querySelector('.price-cell');
-  const addRowButton = document.querySelector('.add-row');
-  const removeRowButton = document.querySelector('.remove-row');
+// Armazenar elementos em variáveis
+const categories = document.querySelectorAll('.category');
+const productsContainer = document.querySelectorAll('.products');
+const products = document.querySelectorAll('.product');
+const modalCloseButtons = document.querySelectorAll('.modal-close');
 
-  // Selecionar elementos do resumo da compra
-  const productList = document.querySelector('.product-list');
-  const totalPrice = document.querySelector('.total-price');
+// Adicionar listeners de clique aos elementos
+categories.forEach((category) => {
+  category.addEventListener('click', () => {
+    const categoryData = category.dataset.category;
 
-  // Inicializar variáveis
-  let totalQuantity = 0;
-  let totalPriceValue = 0;
-
-  // Calcular a quantidade total
-  function calculateTotalQuantity() {
-    totalQuantity = 0;
-    sizeInputs.forEach(input => {
-      totalQuantity += parseInt(input.value);
+    productsContainer.forEach((products) => {
+      if (products.getAttribute('id') === categoryData) {
+        products.classList.toggle('active');
+      } else {
+        products.classList.remove('active');
+      }
     });
-    quantityCell.textContent = totalQuantity;
-  }
 
-  // Calcular o preço total
-  function calculateTotalPrice() {
-    totalPriceValue = 0;
-    sizeInputs.forEach(input => {
-      totalPriceValue += parseInt(input.value) * parseFloat(colorSelect.value);
+    products.forEach((product) => {
+        product.addEventListener('click', () => {
+          showColorModal(product);
+        });
+      });
+
+    
+    products.forEach((product) => {
+      if (product.getAttribute('data-category') === categoryData) {
+        product.classList.toggle('active');
+      } else {
+        product.classList.remove('active');
+      }
     });
-    priceCell.textContent = totalPriceValue.toFixed(2);
-  }
-
-// Adicionar o produto ao resumo da compra
-function addProductToSummary() {
-  const productName = productRow.querySelector('td:first-child').textContent;
-  const productColor = colorSelect.options[colorSelect.selectedIndex].textContent;
-  const productSize = [];
-  const productQuantity = [];
-  const productUnitPrice = colorSelect.value;
-
-  sizeInputs.forEach(input => {
-    if (input.value > 0) {
-      productSize.push(input.parentElement.querySelector('label').textContent);
-      productQuantity.push(input.value);
-    }
   });
+});
 
-  let totalPriceValue = 0; // Variável para acumular o preço total de todos os itens
-
-  productQuantity.forEach((quantity, index) => {
-    const productTotalPrice = quantity * productUnitPrice; // Cálculo do preço total do item
-    const productItem = document.createElement('li');
-    productItem.innerHTML = `
-      ${productName}, ${productColor}, ${productSize[index]}, 
-      ${quantity}, ${productUnitPrice}R$, 
-      ${productTotalPrice.toFixed(2)}R$ 
-      <button class="remove-product">X</button>
-    `;
-    productList.appendChild(productItem);
-
-    totalPriceValue += productTotalPrice; // Acumula o preço total do item na variável totalPriceValue
+modalCloseButtons.forEach((modalCloseButton) => {
+  modalCloseButton.addEventListener('click', () => {
+    closeModal();
   });
+});
 
-  // Atualiza o preço total
-  calculateSummaryTotalPrice(totalPriceValue);
+// Função para fechar o modal
+function closeModal() {
+  colorModal.style.display = 'none';
+  sizeModal.style.display = 'none';
+}
+// Debugging code
+categories.forEach((category) => {
+    category.addEventListener('click', () => {
+      console.log('Category clicked:', category.dataset.category);
+    });
+  });
+  
+  
+
+
+// Função para mostrar o modal de cores
+function showColorModal(product) {
+  const colorModal = document.getElementById('color-modal');
+  const colorModalContent = document.querySelector('#color-modal .modal-body');
+  colorModal.style.display = 'block';
+  colorModalContent.innerHTML = '';
+
+  const colors = product.querySelectorAll('.color');
+
+  colors.forEach((color) => {
+    const colorName = color.querySelector('.color-name').textContent;
+    const colorOption = document.createElement('option');
+    colorOption.value = colorName;
+    colorOption.dataset.color = color.dataset.color;
+    colorOption.addEventListener('click', () => {
+        showSizeModal(product, color.dataset.color);
+      });
+      
+      colorModalContent.appendChild(colorOption);
+    });
 }
 
+function showSizeModal(product, selectedColor) {
+const sizeModal = document.getElementById('size-modal');
+const sizeModalContent = document.querySelector('#size-modal .modal-body');
+sizeModal.style.display = 'block';
+sizeModalContent.innerHTML = '';
 
-  // Remover o produto do resumo da compra
-  function removeProductFromSummary(event) {
-    if (event.target.classList.contains('remove-product')) {
-      const productItem = event.target.parentElement;
-      productList.removeChild(productItem);
-    }
-  }
+const sizes = product.querySelectorAll(`.size[data-color="${selectedColor}"]`);
 
-  // Limpar os campos da tabela
-  function clearTableFields() {
-    colorSelect.selectedIndex = 0;
-    sizeInputs.forEach(input => {
-      input.value = 0;
-    });
-    quantityCell.textContent = 0;
-    priceCell.textContent = 0;
-  }
-
-// Calcular o preço total da lista do Resumo da compra
-function calculateSummaryTotalPrice(totalPriceValue) {
-  let summaryTotalPrice = totalPriceValue;
-  const productItems = document.querySelectorAll('.product-list li');
-  productItems.forEach(item => {
-    const productTotalPrice = parseFloat(item.textContent.split(',')[5]);
-    summaryTotalPrice += productTotalPrice;
+sizes.forEach((size) => {
+const sizeElement = document.createElement('div');
+sizeElement.classList.add('size-option');
+sizeElement.textContent = size.dataset.size;
+sizeElement.addEventListener('click', () => {
+    const quantity = 1;
+    const colorPrice = parseFloat(product.querySelector(`.price[data-color="${selectedColor}"]`).textContent.slice(2));
+    addToCart(product.dataset.product, selectedColor, size.dataset.size, quantity, colorPrice);
+    closeModal();
   });
-  totalPrice.textContent = `Total: ${summaryTotalPrice.toFixed(2)}R$`;
+  
+  sizeModalContent.appendChild(sizeElement);
+});
 }
 
+// Função para fechar o modal
+function closeModal() {
+const colorModal = document.getElementById('color-modal');
+const sizeModal = document.getElementById('size-modal');
+colorModal.style.display = 'none';
+sizeModal.style.display = 'none';
+}
 
+function addToCart(product, color, size, quantity, price) {
+// Cria uma nova linha na tabela de resumo da compra
+let table = document.querySelector('table tbody');
+let row = table.insertRow();
 
-// Adicionar eventos
-colorSelect.addEventListener('change', calculateTotalPrice);
-sizeInputs.forEach(input => input.addEventListener('input', calculateTotalQuantity));
-sizeInputs.forEach(input => input.addEventListener('input', calculateTotalPrice));
-addRowButton.addEventListener('click', addProductToSummary);
-productList.addEventListener('click', removeProductFromSummary);
-productList.addEventListener('click', calculateSummaryTotalPrice);
-removeRowButton.addEventListener('click', clearTableFields);
-addRowButton.classList.add('large-button');
-removeRowButton.classList.add('large-button');
+// Preenche as células da linha com as informações do produto adicionado
+let productCell = row.insertCell(0);
+productCell.innerHTML = product;
+
+let colorCell = row.insertCell(1);
+colorCell.innerHTML = color;
+
+let sizeCell = row.insertCell(2);
+sizeCell.innerHTML = size;
+
+let quantityCell = row.insertCell(3);
+quantityCell.innerHTML = quantity;
+
+let unitPriceCell = row.insertCell(4);
+unitPriceCell.innerHTML = price.toFixed(2);
+
+let totalPriceCell = row.insertCell(5);
+let totalPrice = price * quantity;
+totalPriceCell.innerHTML = totalPrice.toFixed(2);
+
+// Atualiza o subtotal
+let subTotal = document.querySelector('#subtotal');
+let currentSubTotal = parseFloat(subTotal.textContent.slice(3));
+subTotal.textContent = 'R$ ' + (currentSubTotal + totalPrice).toFixed(2);
+}
+
+// Debugging code
+products.forEach((product) => {
+    console.log('Product category:', product.dataset.category);
+  });
+  
