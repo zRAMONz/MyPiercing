@@ -1,149 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="insta.css">
+  <title>Página de Piercings</title>
+</head>
+<body>
+
+      <div id="categories">
+    <div class="category" data-category="category1">Básicos
+    <span class="arrow-down" style="float: right;">&darr;</span></div>
+  </div>
+  <div id="category1" class="products">
+    <!-- Produto 1 -->
+    <div class="product" data-category="category1" onclick="showOptions(this)">
+        <img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/160260706/4e1b394f47.jpg" alt="Ferradura 1">
+        <h3>Ferradura Natural</h3>
+        <div class="product-price">R$8,50</div>
+        <div class="sizes" style="display: none;">
+          <div class="size" data-size="4mm">4mm</div>
+          <div class="size" data-size="5mm">5mm</div>
+          <div class="size" data-size="30mm">30mm</div>
+        </div>
+        <div class="quantity" style="display: none;">
+          <input type="number" value="1" min="1">
+          <button class="add-to-cart">+</button>
+        </div>
+      </div>
+
+      <div class="product" data-category="category1" onclick="showOptions(this)">
+        <img src="https://i.imgur.com/36rKnR4.jpg" alt="Ferradura 1">
+        <h3>Ferradura Gold</h3>
+        <div class="product-price">R$10,50</div>
+        <div class="sizes" style="display: none;">
+          <div class="size" data-size="10mm">10mm</div>
+          <div class="size" data-size="15mm">15mm</div>
+          <div class="size" data-size="30mm">30mm</div>
+        </div>
+        <div class="quantity" style="display: none;">
+          <input type="number" value="1" min="1">
+          <button class="add-to-cart">+</button>
+        </div>
+      </div>
+          <!-- Produto 2 -->
+        <div class="product" data-category="category1" onclick="showOptions(this)">
+            <img src="https://i.imgur.com/dc6A8n6.jpg" alt="Ferradura 1">
+            <h3>Ferradura Black</h3>
+            <div class="product-price">R$11,00</div>
+            <div class="sizes" style="display: none;">
+              <div class="size" data-size="10mm">10mm</div>
+              <div class="size" data-size="15mm">15mm</div>
+              <div class="size" data-size="30mm">30mm</div>
+            </div>
+            <div class="quantity" style="display: none;">
+              <input type="number" value="1" min="1">
+              <button class="add-to-cart">+</button>
+            </div>
+          </div>
+
+
+          <div class="product" data-category="category1">
+            <img src="https://i.imgur.com/CpLMWLt.jpg" alt="Ferradura 4">
+            <h3>Labret Natural</h3>
+        <div class="product-price">R$8,50</div>
+        <div class="sizes" style="display: none;">
+          <div class="size" data-size="10mm">10mm</div>
+          <div class="size" data-size="15mm">15mm</div>
+          <div class="size" data-size="30mm">30mm</div>
+        </div>
+        <div class="quantity" style="display: none;">
+          <input type="number" value="1" min="1">
+          <button class="add-to-cart">+</button>
+        </div>
+      </div>
+
+    <!-- Produto 2 -->
+    <div class="product" data-category="category1">
+      <img src="https://i.imgur.com/nIGK6IE.jpg" alt="Ferradura 5">
+      <h3>Labret Gold</h3>
+        <div class="product-price">R$10,50</div>
+        <div class="sizes" style="display: none;">
+          <div class="size" data-size="10mm">10mm</div>
+          <div class="size" data-size="15mm">15mm</div>
+          <div class="size" data-size="30mm">30mm</div>
+        </div>
+        <div class="quantity" style="display: none;">
+          <input type="number" value="1" min="1">
+          <button class="add-to-cart">+</button>
+        </div>
+      </div>
+          <!-- Produto 2 -->
+      <div class="product" data-category="category1">
+        <img src="https://i.imgur.com/zAPTK3j.jpg" alt="Ferradura 5">
+        <h3>Labret Black</h3>
+            <div class="product-price">R$11,50</div>
+            <div class="sizes" style="display: none;">
+              <div class="size" data-size="10mm">10mm</div>
+              <div class="size" data-size="15mm">15mm</div>
+              <div class="size" data-size="30mm">30mm</div>
+            </div>
+            <div class="quantity" style="display: none;">
+              <input type="number" value="1" min="1">
+              <button class="add-to-cart">+</button>
+            </div>
+          </div>
+    </div>
+
+  <div id="categories">
+    <div class="category" data-category="Fashion">Fashion    
+        <span class="arrow-down" style="float: right;">&darr;</span></div>
+  </div>
+  <div id="Fashion" class="products">
+    <!-- Produto 1 -->
+    <div class="product" data-category="Fashion">
+      <img src="https://i.imgur.com/CpLMWLt.jpg" alt="Ferradura 4">
+      <h3>Labret Natural</h3>
+      <div class="colors">
+        <div class="color" data-color="silver">
+          <div class="color-name">Silver</div>
+          <div class="price" data-color="silver">R$8,50</div>
+        </div>
+      </div>
+      <div class="sizes">
+        <div class="size" data-color="silver" data-size="10mm">10mm</div>
+        <div class="size" data-color="silver" data-size="15mm">15mm</div>
+        <div class="size" data-color="silver" data-size="30mm">30mm</div>
+      </div>
+    </div>
+
+    <!-- Produto 2 -->
+    <div class="product" data-category="Fashion">
+      <img src="https://i.imgur.com/nIGK6IE.jpg" alt="Ferradura 5">
+      <h3>Labret Gold</h3>
+      <div class="colors">
+        <div class="color" data-color="silver">
+          <div class="color-name">Silver</div>
+          <div class="price" data-color="silver">R$10,50</div>
+        </div>
+      </div>
+      <div class="sizes">
+        <div class="size" data-color="silver" data-size="10mm">10mm</div>
+        <div class="size" data-color="silver" data-size="15mm">15mm</div>
+        <div class="size" data-color="silver" data-size="30mm">30mm</div>
+      </div>
+    </div>
+  </div>
+      <!-- Produto 2 -->
+      <div class="product" data-category="Fashion">
+        <img src="https://i.imgur.com/zAPTK3j.jpg" alt="Ferradura 5">
+        <h3>Labret Black</h3>
+        <div class="colors">
+          <div class="color" data-color="silver">
+            <div class="color-name">Silver</div>
+            <div class="price" data-color="silver">R$11,50</div>
+          </div>
+        </div>
+        <div class="sizes">
+          <div class="size" data-color="silver" data-size="10mm">10mm</div>
+          <div class="size" data-color="silver" data-size="15mm">15mm</div>
+          <div class="size" data-color="silver" data-size="30mm">30mm</div>
+        </div>
+      </div>
+    </div>
+        <!-- Produto 2 -->
+        <div class="product" data-category="Fashion">
+            <img src="https://i.imgur.com/HRhLlDI.jpg" alt="Ferradura 5">
+            <h3>Ferradura Gold</h3>
+            <div class="colors">
+              <div class="color" data-color="silver">
+                <div class="color-name">Silver</div>
+                <div class="price" data-color="silver">R$10,00</div>
+              </div>
+            </div>
+            <div class="sizes">
+              <div class="size" data-color="silver" data-size="10mm">10mm</div>
+              <div class="size" data-color="silver" data-size="15mm">15mm</div>
+              <div class="size" data-color="silver" data-size="30mm">30mm</div>
+            </div>
+          </div>
+        </div>
+<!-- Produto 2 -->
+<div class="product" data-category="Fashion">
+    <img src="https://i.imgur.com/HRhLlDI.jpg" alt="Ferradura Black 5">
+    <h3>Ferradura Black</h3>
+    <div class="colors">
+      <div class="color" data-color="Black">
+        <div class="color-name">Black</div>
+        <div class="price" data-color="Black">R$10,00</div>
+      </div>
+    </div>
+    <div class="sizes">
+      <div class="size" data-color="Black" data-size="10mm">10mm</div>
+      <div class="size" data-color="Black" data-size="15mm">15mm</div>
+      <div class="size" data-color="Black" data-size="30mm">30mm</div>
+    </div>
+  </div>
+</div>
+<!-- Produto 2 -->
+<div class="product" data-category="Fashion">
+    <img src="https://i.imgur.com/HRhLlDI.jpg" alt="Ferradura 5">
+    <h3>Ferradura Gold</h3>
+    <div class="colors">
+      <div class="color" data-color="silver">
+        <div class="color-name">Silver</div>
+        <div class="price" data-color="silver">R$10,00</div>
+      </div>
+    </div>
+    <div class="sizes">
+      <div class="size" data-color="silver" data-size="10mm">10mm</div>
+      <div class="size" data-color="silver" data-size="15mm">15mm</div>
+      <div class="size" data-color="silver" data-size="30mm">30mm</div>
+    </div>
+  </div>
+</div>
+
+  <!-- Restante do HTML -->
+  <!-- Restante do HTML -->
+
+</div>
+</div>
+<div id="categories">
+    <div class="category" data-category="category4">Correntes    
+        <span class="arrow-down" style="float: right;">&darr;</span></div>
+  </div>
+  <div id="category4" class="products">
+    <!-- Produto 1 -->
+    <div class="product" data-category="category4">
+      <img src="https://i.imgur.com/HRhLlDI.jpg" alt="Ferradura 1">
+      <h3>Ferradura Silver</h3>
+      <div class="colors">
+        <div class="color" data-color="silver">
+          <div class="color-name">Silver</div>
+          <div class="price" data-color="silver">R$10,00</div>
+        </div>
+      </div>
+      <div class="sizes">
+        <div class="size" data-color="silver" data-size="10mm">10mm</div>
+        <div class="size" data-color="silver" data-size="15mm">15mm</div>
+        <div class="size" data-color="silver" data-size="30mm">30mm</div>
+      </div>
+    </div>
+
+    <!-- Produto 2 -->
+    <div class="product" data-category="category4">
+      <img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/194205800/septo-2-3dc6e1ee28.jpg" alt="Ferradura 2">
+      <h3>Ferradura Gold</h3>
+      <div class="colors">
+        <div class="color" data-color="silver">
+          <div class="color-name">Silver</div>
+          <div class="price" data-color="silver">R$10,00</div>
+        </div>
+      </div>
+      <div class="sizes">
+        <div class="size" data-color="silver" data-size="10mm">10mm</div>
+        <div class="size" data-color="silver" data-size="15mm">15mm</div>
+        <div class="size" data-color="silver" data-size="30mm">30mm</div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="categories">
+    <div class="category" data-category="category4">Pingentes    
+        <span class="arrow-down" style="float: right;">&darr;</span></div>
+  </div>
+  <div id="category4" class="products">
+</div>
+<div id="categories">
+    <div class="category" data-category="category4">Umbigo    
+        <span class="arrow-down" style="float: right;">&darr;</span></div>
+  </div>
+  <div id="category4" class="products">
+</div>
+<div id="summary">
+<h2>Resumo da compra</h2>
 <table>
-  <thead><thead><link rel="stylesheet" type="text/css" href="./index.css">
+  <thead>
     <tr>
       <th>Produto</th>
       <th>Cor</th>
-      <th>Medida</th>
-      <th>Uni</th>
-      <th>Preço</th>
-      <th>Ações</th>
+      <th>Tamanho</th>
+      <th>Quantidade</th>
+      <th>Preço Unitário</th>
+      <th>Preço Total</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="product-row">
-<td><img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/160260706/4e1b394f47.jpg" alt="Ferradura" width="100">
- <div class="product-name">Ferradura</div>
-      <td>
-        <select class="color-select">
-          <option value="">Cor</option>
-          <option value="8.50">Natural</option>
-          <option value="10.50">Gold</option>
-          <option value="11.50">Black</option>
-        </select>
-      </td>
-      <td>
-        <div>
-          <label>1.2 x 6 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 8 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 10 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-      </td>
-      <td class="quantity-cell">0</td>
-      <td class="price-cell"></td>
-      <td>
-        <button class="add-row">+</button>
-        <button class="remove-row">-</button>
-      </td>
-    </tr>
-    <tr class="product-row">
-<td><img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/183111998/a914bda375.jpg" alt="Captive" width="100">
- <div class="product-name">Captive</div>
-      <td>
-        <select class="color-select">
-          <option value="">Cor</option>
-          <option value="8.50">Natural</option>
-          <option value="10.50">Gold</option>
-          <option value="11.50">Black</option>
-        </select>
-      </td>
-      <td>
-        <div>
-          <label>1.2 x 6 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 8 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 10 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-      </td>
-      <td class="quantity-cell">0</td>
-      <td class="price-cell"></td>
-      <td>
-        <button class="add-row">+</button>
-        <button class="remove-row">-</button>
-      </td>
-    </tr>
-    <tr class="product-row">
-<td><img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/193337719/sem-titulo-1-gpnxra.jpg" alt="Labret" width="100">
- <div class="product-name">Labret</div>
-      <td>
-        <select class="color-select">
-          <option value="">Cor</option>
-          <option value="8.50">Natural</option>
-          <option value="10.50">Gold</option>
-          <option value="11.50">Black</option>
-        </select>
-      </td>
-      <td>
-        <div>
-          <label>1.2 x 6 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 8 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 10 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-      </td>
-      <td class="quantity-cell">0</td>
-      <td class="price-cell"></td>
-      <td>
-        <button class="add-row">+</button>
-        <button class="remove-row">-</button>
-      </td>
-    </tr>
- <tr class="product-row">
-<td><img src="https://cdn.awsli.com.br/1000x1000/1130/1130778/produto/164284781/bolinha-qsmlcb.jpg" alt="Barbell" width="100">
- <div class="product-name">Barbell</div>
-      <td>
-        <select class="color-select">
-          <option value="">Cor</option>
-          <option value="8.50">Natural</option>
-          <option value="10.50">Gold</option>
-          <option value="11.50">Black</option>
-        </select>
-      </td>
-      <td>
-        <div>
-          <label>1.2 x 6 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 8 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-        <div>
-          <label>1.2 x 10 mm:</label>
-          <input type="number" value="0" class="size-input" min="0">
-        </div>
-      </td>
-      <td class="quantity-cell">0</td>
-      <td class="price-cell"></td>
-      <td>
-        <button class="add-row">+</button>
-        <button class="remove-row">-</button>
-      </td>
-    </tr>
-<script src="index.js"></script>
+    <!-- Resumo da compra será atualizado dinamicamente -->
   </tbody>
 </table>
-
-<div class="summary">
-  <h3>Resumo da Compra</h3>
-  <ul class="product-list"></ul>
-  <div class="total-price"></div>
 </div>
+<!-- Modal de cores -->
+<!-- Modal de cores -->
+<div id="color-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="popup">
+          ...
+          <div class="measure-options"></div>
+          <input type="text" class="quantity-input" placeholder="Quantidade" />
+          <button class="add-button">Adicionar</button>
+          ...
+        </div>
+      </div>
+      <span class="modal-close">&times;</span>
+    </div>
+  </div>
+  
+        ...
+        <div class="measure-options"></div>
+        <input type="text" class="quantity-input" placeholder="Quantidade" />
+        <button class="add-button">Adicionar</button>
+        ...
+      </div>
+      
+    <span class="modal-close">&times;</span>
+  </div>
+</div>
+</div>
+<!-- Modal de tamanhos -->
+<div id="size-modal" class="modal">
+<div class="modal-content">
+  <div class="modal-header">
+    <h2>Escolha o tamanho</h2>
+    <span class="modal-close">&times;</span>
+  </div>
+  <div class="modal-body">
+    <!-- Opções de tamanhos serão atualizadas dinamicamente -->
+</div>
+</div>
+
+</div>
+  
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const measureOptions = document.querySelector(".measure-options");
+  
+      const products = document.querySelectorAll(".product");
+      products.forEach(function (product) {
+        product.addEventListener("click", function () {
+          // Atualizar opções de medida
+          measureOptions.innerHTML = "";
+          const sizes = product.querySelectorAll(".sizes .size");
+          sizes.forEach(function (size) {
+            const sizeValue = size.getAttribute("data-size");
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = "size";
+            checkbox.value = sizeValue;
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(sizeValue));
+            measureOptions.appendChild(label);
+          });
+  
+          // Remover seleção de cor
+          const colorSelection = document.querySelector(".modal .colors");
+          if (colorSelection) {
+            colorSelection.remove();
+          }
+  
+          // Exibir ou ocultar a caixa existente
+          const modal = document.querySelector(".modal");
+          modal.style.display = modal.style.display === "none" ? "block" : "none";
+        });
+      });
+  
+      // Adicionar evento de fechamento do modal
+      const modalClose = document.querySelector(".modal-close");
+      modalClose.addEventListener("click", function () {
+        const modal = document.querySelector(".modal");
+        modal.style.display = "none";
+      });
+    });
+  </script>
+  
+  <script src="insta.js"></script>
+</body>
+</html>
