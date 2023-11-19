@@ -514,7 +514,24 @@ footer {
     margin-right: 16px;
 }
 @media (max-width: 678px) {
-
+    .product {
+display: flex;
+    margin: 15px 0 40px;
+    padding: 15px 20px;
+    background-color: #ffffff96;
+    border-radius: 30px;
+    min-height: 340px;
+    box-shadow: 9px 10px 14px 0px #31313185;
+    flex-direction: column;
+    flex: 0 0 calc(50% - 50px);
+    align-items: center;
+}
+.product-container {
+flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 0 20px;
+}
     #total-label {
         font-size: 60px!important;
       }
