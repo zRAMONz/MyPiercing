@@ -513,6 +513,9 @@ button.color:focus:active {
     box-shadow: -3px 0px 20px 0px #00000085;
 }
 @media (max-width: 678px) {
+.bpw-powered {
+    display: none!important;
+}
     #purchaseSummary.show-purchaseSummary {
         left: 0;
     }
