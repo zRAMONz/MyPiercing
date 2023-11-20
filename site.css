@@ -1452,3 +1452,23 @@ flex-wrap: wrap;
         width: 50px;
         height: 55px;
     }
+
+    .bp-widget-widget {
+        left: 0px!important;
+        bottom: 0px!important;
+        height: 76px;
+        left: auto;
+        right: 36px;
+        top: auto;
+        width: 57px;
+    }
+    .bpw-header-container {
+        background: #00c4c4!important;
+    }
+    .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
+        background-color: 
+    color-mix(in srgb, #000 5%, #00c4c4)!important;
+    }
+    .bpw-floating-button {
+        background-color: #00c4c4!important;
+    }
