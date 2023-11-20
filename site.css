@@ -3,8 +3,8 @@
     position: fixed;
     right: 10px;
     bottom: 10px;
-    background-color: #31b5b5;
-    color: white;
+    background-color: #ffffff;
+    color: #31b5b5;
     border-radius: 50%;
     width: 50px;
     height: 58px;
@@ -14,9 +14,8 @@
     align-items: center;
     justify-content: center;
     background-image: none;
-    border: 1px solid #157373;
     z-index: 9999;
-    box-shadow: 2px 2px 6px 0px #31313185;
+    box-shadow: 0px 0px 13px 0px #31b5b5;
 }
 
 /* Estilo do botão de carrinho */
@@ -421,10 +420,7 @@ button.color {
     background-color: darkred;
 }
 button:focus {
-    background-color: #34c7c7;
-}
-button:focus:active {
-    background-color: darkpurple;
+    background-color: #ffffff;
 }
 header h1 {
     color: #303030;
@@ -505,8 +501,21 @@ button.color:focus:active {
 .sizes[data-color="Gold"] {
     display: none;
 }
-
+#purchaseSummary.show-purchaseSummary {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.5s;
+    background-image: linear-gradient(90deg, #dffafa 0%, #e8ffff 55%, #dffafa 100%);
+    padding: 0 10px;
+}
 @media (max-width: 678px) {
+    #purchaseSummary.show-purchaseSummary {
+        left: 0;
+        width: 100%;
+    }
     .measure-container {
         display: flex;
         flex-direction: column; /* Empilha os itens verticalmente */
@@ -771,9 +780,11 @@ flex-wrap: wrap;
      }
      
 }
-
-
-@media (min-width: 1024px) {
+@media (min-width: 678px) and (max-width: 1024px) {
+    .decrease-button, .increase-button {
+        height: 31px;
+        vertical-align: middle; /* Alinha verticalmente os elementos */
+     }
     .product img {
         width: 100px;
     }
@@ -818,13 +829,8 @@ flex-wrap: wrap;
     .product img {
         width: 150px;
     }
-    .product-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0px;
-    }
     #popup {
-        max-width: 45%;
+        max-width: 85%;
         padding: 10px;
         box-shadow: 2px 2px 6px 0px #31313185;
     }
@@ -846,10 +852,7 @@ flex-wrap: wrap;
         margin-bottom: 0px;
         margin-right: 10px;
     }
-    #popup-add {
-        margin: 0px;
-        font-size: 25px;
-    }
+
     #popup-product-image {
         width: 110px;
         height: 110px;
@@ -858,7 +861,7 @@ flex-wrap: wrap;
         padding-right: 30px;
     }
     #popup .popup-sizes {
-        justify-content: flex-start;
+        justify-content: center;
     }
     #popup-logo {
         width: 20%;
@@ -959,9 +962,10 @@ flex-wrap: wrap;
         min-height: 150px;
     }
     #purchaseSummary p {
-        font-size: 20px;
+        font-size: 15px;
+        margin: 10px 0;
     }
-    button {
+       button {
         font-size: 20px;
     }
     #copyButton, #whatsappButton {
@@ -985,23 +989,356 @@ flex-wrap: wrap;
         margin-left: 10px;
     }
     .contact-info {
-        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+
     }
-    #buttonContainer {
-        padding: 0px 80px;
-    }
+
     footer {
         width: 100%;
         padding: 10px;
         height: 100px;
         justify-content: center;
+            align-items: center;
     }
     #clearCartButton {
         margin: auto;
         padding: 14px;
         color: #00878e;
         border: 1px solid gray;
-        border-radius: 24px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 6px;
+        margin-bottom: 22px;
+        font-size: 20px;
+        max-width: 300px;
+    }
+    .contact-info div {
+        margin-bottom: 10px;
+    }
+    .sizes[data-color="Natural"] {
+        max-width: 40%;
+    }
+    #total {
+        font-size: 25px;
+    }
+    #copiedText {
+        position: absolute;
+        bottom: 56px;
+        visibility: hidden;
+        background-color: #ffffff;
+        color: #00858b;
+        border: 1px solid #c3c3c3;
+        padding: 6px;
+        border-radius: 5px;
+        text-align: center;
+        margin-left: 10px;
+    }
+    .popup-sizes .size .sizes2 {
+        column-gap: 10px;
+    }
+    .product h3 {
+        font-size: 13px!important;
+    }
+    .product {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0 40px;
+        padding: 15px 20px;
+        background-color: #ffffff96;
+        border-radius: 30px;
+        box-shadow: 2px 2px 6px 0px #31313185;
+        align-items: center;
+        min-width: 0; /* Adiciona um mínimo de largura */
+        width: 100%; /* Força todos os elementos a terem a mesma largura */
+        box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+    }
+    
+    .product-details {
+        display: flex;
+        flex-direction: column;
+    }
+    button.color {
+        padding: 10px 10px;
+    }
+    button {
+        font-size: 20px;
+         padding: 8px;
+}
+.decrease-button, .increase-button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin: 3px 0 10px 0;
+    height: 32px;
+}
+#popup input[type="number"] {
+    text-align: center;
+}
+.increase-button {
+    border-radius: 0 5px 5px 0;
+    padding: 0 5px 0 5px;
+}
+.decrease-button {
+    border-radius: 5px 0 0 5px;
+    padding: 0 7px 0 7px;
+}
+#purchaseSummary.show-purchaseSummary {
+    right: 0;
+    width: 50%;
+    border: 1px solid #bdbdbd;    
+}
+
+#purchaseSummary.show-purchaseSummary p {
+    font-size: 15px;
+}
+}
+@media (min-width: 678px) and (max-width: 768px) {
+    .product-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Cria cinco colunas de tamanhos iguais */
+        gap: 10px; /* Espaçamento entre as colunas e linhas */
+    }
+    }
+@media (min-width: 768px) {
+    .product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Cria cinco colunas de tamanhos iguais */
+    gap: 10px; /* Espaçamento entre as colunas e linhas */
+}
+}
+@media (min-width: 1024px) {
+    .cart-button {
+        height: 51px!important;
+    }
+       .product img {
+        width: 100px;
+    }
+    body.keyboard-open #popup {
+        height: auto;
+    }
+    .product {
+        padding: 15px 10px;
+        margin: 15px 0 10px;
+    }
+    .sizes .size {
+        margin-right: -130px;
+    }
+    .colors {
+        margin-right: 0px;
+    }
+    .colors .color {
+        margin: 3px 0;
+    }
+    #popup {
+        position: fixed;
+        top: 50%;
+    }
+    #productList h2 {
+        margin: 10px 0px;
+    }
+    button.color {
+        height: 40px;
+        width: 80px;
+        font-size: 18px;
+    }
+    button.colorthree {
+        height: 40px;
+        width: 50px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1px solid #979797;
+        font-size: 16px;
+        padding: 5px 5px;
+        margin: 3px;
+    }
+    .product img {
+        width: 150px;
+    }
+    .product-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+    }
+    #popup {
+        max-width: 45%;
+        padding: 10px;
+        box-shadow: 2px 2px 6px 0px #31313185;
+    }
+    .popup-color {
+        font-size: 20px;
+    }
+    #popup-close {
+        height: 30px!important;
+        width: 30px!important;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .measure-quantity {
+        width: 50px;
+        height: 20px;
+    }
+    #popup .measure {
+        font-size: 16px;
+        margin-bottom: 0px;
+        margin-right: 10px;
+    }
+
+    #popup-product-image {
+        width: 110px;
+        height: 110px;
+    }
+    .size {
+        padding-right: 30px;
+    }
+    #popup .popup-sizes {
+        justify-content: center;
+    }
+    #popup-logo {
+        width: 20%;
+    }
+    #welcomePopup p {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    #welcomePopup button {
+        font-size: 25px;
+        width: 30%;
+        padding: 7px;
+        max-width: 255px;
+        margin: 5px;
+    }
+    .icons .insta-container img {
+        width: 40px;
+    }
+    .icons .whatsapp-container img {
+        width: 40px;
+    }
+    .product h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .productlist {
+        margin: 100px;
+    }
+    .measure {
+        margin-bottom: 4px;
+    }
+    .product img {
+        width: 150px;
+    }
+    .product {
+        max-width: 90%;
+        justify-content: space-around;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .icons {
+        min-width: 100%;
+    }
+    #copyButton, #whatsappButton {
+        font-size: 40px;
+        padding: 0 35px 0;
+        height: 95px;
+    }
+    #copyButton {
+        margin-left: 0px;
+    }
+    header img {
+        width: 300px;
+    }
+    .popup-product-name {
+        font-size: 20px;
+    }
+    .popup-header {
+        align-items: flex-start;
+    }
+    .popup-text {
+        margin-left: 15px;
+    }
+    #popup-close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #popup input[type="number"] {
+        font-size: 20px;
+    }
+    .popup-sizes .size {
+        padding: 0px 15px;
+    }
+    #popup .popup-sizes .size h4 {
+        font-size: 15px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #popup h2 {
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    #popup-product-image {
+        margin-bottom: 10px;
+    }
+    #popup .popup-sizes {
+        padding-bottom: 10px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+    .product {
+        min-height: 150px;
+    }
+    #purchaseSummary p {
+        font-size: 15px;
+        margin: 10px 0;
+    }
+       button {
+        font-size: 20px;
+    }
+    #copyButton, #whatsappButton {
+        font-size: 25px;
+        padding: 0 20px 0;
+        height: 55px;
+    }
+    .added-banner {
+        left: 10px!important;
+    }
+
+    .contact-info p {
+        font-size: 15px;
+    }
+    .contact-info img {
+        margin-right: 0px;
+        height: 30px;
+        width: 30px;
+    }
+    .contact-info p {
+        margin-left: 10px;
+    }
+    .contact-info {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+
+    }
+
+    footer {
+        width: 100%;
+        padding: 10px;
+        height: 100px;
+        justify-content: center;
+            align-items: center;
+    }
+    #clearCartButton {
+        margin: auto;
+        padding: 14px;
+        color: #00878e;
+        border: 1px solid gray;
         text-align: center;
         cursor: pointer;
         margin-top: 6px;
@@ -1084,42 +1421,34 @@ flex-wrap: wrap;
     border-radius: 5px 0 0 5px;
     padding: 0 7px 0 7px;
 }
+#purchaseSummary.show-purchaseSummary {
+    right: 0;
+    width: 40%;
+    border: 1px solid #bdbdbd;    
+}
+
+#purchaseSummary.show-purchaseSummary p {
+    font-size: 15px;
+}
+
 }
 
 #purchaseSummary {
     /* estilos existentes para o final da página */
 }
 
-#purchaseSummary.show-purchaseSummary {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    z-index: 1000;
-    transition: transform 0.5s;
-    background-image: linear-gradient(90deg, #dffafa 0%, #e8ffff 55%, #dffafa 100%);
-    padding: 0 10px;
-}
-
-#purchaseSummary.show-purchaseSummary #cart {
-    width: 95%;
-}
 #purchaseSummary.show-purchaseSummary #buttonContainer {
-    width: 95%;
+    width: 100%;
 }
 #purchaseSummary.show-purchaseSummary #clearCartButton {
     width: 95%;
     margin: 0;
 }
-/* Esconda o purchaseSummary originalmente e só mostre quando a classe show-purchaseSummary for adicionada */
-@media screen and (min-width: 1024px) {
-    #purchaseSummary {
-        display: none;
-    }
 
     #purchaseSummary.show-purchaseSummary {
         display: block;
     }
-}
+    .cart-button {
+        width: 50px;
+        height: 55px;
+    }
