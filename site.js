@@ -1,24 +1,89 @@
 function openPopup(e) {
-    var t = e.target.closest(".product"),
+  var t = e.target.closest(".product"),
       n = e.target.getAttribute("data-color"),
       r = e.target.getAttribute("data-price"),
       o = document.getElementById("popup");
-    o.getElementsByClassName("popup-product-name")[0].innerText = t.getElementsByClassName("product-name")[0].innerText, o.getElementsByClassName("popup-color")[0].innerText = n + ": €" + r;
-    var l = t.getElementsByTagName("img")[0];
-    document.getElementById("popup-product-image").src = l.src;
-    for (var a = t.querySelectorAll('.sizes[data-color="' + n + '"] > .size'), d = o.getElementsByClassName("popup-sizes")[0]; d.firstChild;) d.removeChild(d.firstChild);
-    for (var s = 0; s < a.length; s++) {
-      for (var p = a[s].cloneNode(!0), c = p.querySelectorAll(".measure-container .measure"), m = 0; m < c.length; m++) {
-        var u = c[m].nextSibling;
-        if (!u || "input" !== u.nodeName.toLowerCase()) {
-          var y = document.createElement("input");
-          y.type = "number", y.min = "0", y.className = "measure-quantity", c[m].parentNode.insertBefore(y, c[m].nextSibling);
-        }
-      }
-      d.appendChild(p);
-    }
-    o.style.display = "block";
+
+  o.getElementsByClassName("popup-product-name")[0].innerText = t.getElementsByClassName("product-name")[0].innerText;
+  o.getElementsByClassName("popup-color")[0].innerText = n + ": € " + r;
+
+  var l = t.getElementsByTagName("img")[0];
+  document.getElementById("popup-product-image").src = l.src;
+
+  var d = o.getElementsByClassName("popup-sizes")[0];
+  while (d.firstChild) {
+      d.removeChild(d.firstChild);
   }
+
+  var a = t.querySelectorAll('.sizes[data-color="' + n + '"] > .size');
+  for (var s = 0; s < a.length; s++) {
+    var p = a[s].cloneNode(true);
+    var c = p.querySelectorAll(".measure-container .measure");
+
+    for (var m = 0; m < c.length; m++) {
+        var measureContainer = c[m].parentNode;
+
+        // Encontre o input existente e remova-o
+        var existingInput = measureContainer.querySelector(".measure-quantity");
+        if (existingInput) {
+            measureContainer.removeChild(existingInput);
+        }
+
+          // Criar o contêiner para os controles (botões e input)
+          var controlsContainer = document.createElement("div");
+          controlsContainer.className = "controls";
+
+          // Criar e configurar os botões e o input
+          var decreaseButton = document.createElement("button");
+          decreaseButton.innerText = "-";
+          decreaseButton.className = "decrease-button";
+
+          var increaseButton = document.createElement("button");
+          increaseButton.innerText = "+";
+          increaseButton.className = "increase-button";
+
+          var quantityInput = document.createElement("input");
+          quantityInput.type = "number";
+          quantityInput.min = "0";
+          quantityInput.className = "measure-quantity";
+
+          // Adicionar os botões e o input ao contêiner de controles
+          controlsContainer.appendChild(decreaseButton);
+          controlsContainer.appendChild(quantityInput);
+          controlsContainer.appendChild(increaseButton);
+
+          // Adicionar o contêiner de controles ao measureContainer
+          measureContainer.appendChild(controlsContainer);
+
+          // Eventos para os botões
+          decreaseButton.addEventListener("click", function(event) {
+              let inputElement = event.target.parentNode.querySelector(".measure-quantity");
+              let currentValue = parseInt(inputElement.value, 10);
+              if (isNaN(currentValue)) {
+                  currentValue = 0;
+              }
+              if (currentValue > 0) {
+                  inputElement.value = currentValue - 1;
+              }
+          });
+
+          increaseButton.addEventListener("click", function(event) {
+              let inputElement = event.target.parentNode.querySelector(".measure-quantity");
+              let currentValue = parseInt(inputElement.value, 10);
+              if (isNaN(currentValue)) {
+                  currentValue = 0;
+              }
+              inputElement.value = currentValue + 1;
+          });
+      }
+
+      d.appendChild(p);
+  }
+
+  o.style.display = "block";
+}
+
+
   let freight = 21.0; // define o valor do frete
   let selectedSize = null,
     initialViewportHeight = window.innerHeight;
@@ -58,8 +123,10 @@ function openPopup(e) {
     let cartItems = JSON.parse(getItemWithExpiry("cart") || "[]");
 
     for (var i = 0; i < measures.length; i++) {
-        var price = parseFloat(measures[i].getAttribute("data-price"));
-        var quantity = parseInt(measures[i].nextElementSibling.value, 10);
+      var price = parseFloat(measures[i].getAttribute("data-price"));
+      // Ajustar a maneira de obter a quantidade
+      var quantityInput = measures[i].parentNode.querySelector(".measure-quantity");
+      var quantity = parseInt(quantityInput.value, 10);
 
         if (quantity > 0) {
             var sizeText = measures[i].innerText;
@@ -109,6 +176,14 @@ function openPopup(e) {
 
             // Adicionar o novo elemento ao array cartItems
             cartItems.push(productElement.outerHTML);
+            
+            var cartButton = document.getElementById("cartButton");
+            cartButton.classList.add("yellow");
+        
+            // Remover a classe amarela após 2 segundos
+            setTimeout(() => {
+                cartButton.classList.remove("yellow");
+            }, 1200); // 2 segundos
         }
     }
 
@@ -124,7 +199,20 @@ function openPopup(e) {
      div.firstChild.querySelector("button").addEventListener("click", removeFromCart);
      cart.appendChild(div.firstChild);
  }
+    // Adicionando a mensagem "Adicionado"
+    var B = document.createElement("div");
+    B.style.position = "absolute";
+    B.style.top = "0";
+    B.style.left = "10px";
+    B.style.color = "white";
+    B.style.padding = "5px";
+    B.style.zIndex = "100";
+    B.className = "added-banner";
+    B.innerText = "Adicionado";
 
+    var h = document.querySelector(`img[src="${productImage}"]`).closest(".product");
+    h.style.position = "relative";
+    h.appendChild(B);
  closePopup();
 }
 
