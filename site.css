@@ -307,6 +307,7 @@ body {
     border: 1px solid #979797;
 }
 
+
 .sizes {
     display: flex;
     flex-direction: row;
@@ -420,7 +421,7 @@ button.color {
     background-color: darkred;
 }
 button:focus {
-    background-color: purple;
+    background-color: #34c7c7;
 }
 button:focus:active {
     background-color: darkpurple;
@@ -1083,4 +1084,42 @@ flex-wrap: wrap;
     border-radius: 5px 0 0 5px;
     padding: 0 7px 0 7px;
 }
+}
+
+#purchaseSummary {
+    /* estilos existentes para o final da página */
+}
+
+#purchaseSummary.show-purchaseSummary {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: transform 0.5s;
+    background-image: linear-gradient(90deg, #dffafa 0%, #e8ffff 55%, #dffafa 100%);
+    padding: 0 10px;
+}
+
+#purchaseSummary.show-purchaseSummary #cart {
+    width: 95%;
+}
+#purchaseSummary.show-purchaseSummary #buttonContainer {
+    width: 95%;
+}
+#purchaseSummary.show-purchaseSummary #clearCartButton {
+    width: 95%;
+    margin: 0;
+}
+/* Esconda o purchaseSummary originalmente e só mostre quando a classe show-purchaseSummary for adicionada */
+@media screen and (min-width: 1024px) {
+    #purchaseSummary {
+        display: none;
+    }
+
+    #purchaseSummary.show-purchaseSummary {
+        display: block;
+    }
 }
