@@ -215,7 +215,27 @@ function openPopup(e) {
     h.appendChild(B);
  closePopup();
 }
+function updatePurchaseSummaries() {
+  var original = document.getElementById("purchaseSummary");
+  var clone = document.getElementById("purchaseSummaryClone");
 
+  if (clone) {
+      // Substitua o conteúdo do clone pelo conteúdo atualizado do original
+      clone.innerHTML = original.innerHTML;
+      // Reatribua event listeners aos botões no clone, se necessário
+      reassignEventListeners(clone);
+  }
+}
+
+function reassignEventListeners(clone) {
+  // Exemplo: Reatribuir event listener para botões de remover do carrinho
+  var removeButtons = clone.querySelectorAll(".remove-button");
+  removeButtons.forEach(button => {
+      button.addEventListener("click", removeFromCart);
+  });
+
+  // Faça o mesmo para outros botões como copiar texto, enviar por WhatsApp, etc.
+}
  
   function removeFromCart(e) {
     var t = e.target.parentNode,
@@ -232,6 +252,8 @@ function openPopup(e) {
   let E = JSON.parse(getItemWithExpiry("cart") || "[]");
   E.splice(E.indexOf(t.outerHTML), 1);
   setItemWithExpiry("cart", JSON.stringify(E));
+      // Atualize ambos purchaseSummary e purchaseSummaryClone
+      updatePurchaseSummaries();
   }
   
   window.addEventListener("resize", function () {
@@ -322,3 +344,7 @@ document.getElementById("copyButton").addEventListener("click", function () {
     }
     return item.value;
   }
+  document.getElementById("cartButton").addEventListener("click", function() {
+    var purchaseSummary = document.getElementById("purchaseSummary");
+    purchaseSummary.classList.toggle("show-purchaseSummary");
+});
