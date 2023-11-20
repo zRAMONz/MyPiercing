@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8" />
         <title>My Piercing Italy</title>
-        <link rel="stylesheet" type="text/css" href="https://zRAMONz.github.io/My-Piericing/site.css" />
+        <link rel="stylesheet" type="text/css" href="site (1).css" />
         <link rel="icon" href="https://i.imgur.com/P8IA7eK.jpg" />
         <link rel="icon" href="https://i.imgur.com/P8IA7eK.jpg" />
         <meta name="theme-color" content="#dffafa" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     </head>
     <body>
-        <div class="icons">
-            <div class="insta-container">
-                <a href="https://www.instagram.com/Tuling463/" target="_blank"> <img src="https://i.imgur.com/fmTitG4.png" alt="Instagram" /> </a>
-            </div>
-            <div class="whatsapp-container">
-                <a href="https://wa.me/393898986018" target="_blank"> <img src="https://i.imgur.com/9hAlWtG.png" alt="WhatsApp" /> </a>
-            </div>
-        </div>
-        <header><img src="https://i.imgur.com/yfnzUPF.png" alt="Logo" width="200" height="200" /></header>
+        <button class="cart-button" id="cartButton">
+            <i class="fas fa-shopping-cart"></i> <!-- Ícone do carrinho (Font Awesome) -->
+        </button>
+        
+        <header><img src="https://i.imgur.com/JnhdMij.png" alt="Logo" width="200" height="200" /></header>
         <section id="productList">
             <h2>Produtos</h2>
             <div class="product-container">
@@ -185,8 +182,8 @@
                         </div>
                     </div>
                     <div class="colors">
-                        <button class="color" data-price="2.5" data-color="Natural">€ 2.5</button><button class="color" data-price="3.5" data-color="Gold">€ 3.5</button>
-                        <button class="color" data-price="3.5" data-color="Black">€ 3.5</button>
+                        <button class="colorthree" data-price="2.5" data-color="Natural">€ 2.5</button><button class="colorthree" data-price="3.5" data-color="Gold">€ 3.5</button>
+                        <button class="colorthree" data-price="3.5" data-color="Black">€ 3.5</button>
                     </div>
                 </div>
                 <div class="product">
@@ -279,8 +276,8 @@
                         </div>
                     </div>
                     <div class="colors">
-                        <button class="color" data-price="2.5" data-color="Natural">€ 2.5</button><button class="color" data-price="3.5" data-color="Gold">€ 3.5</button>
-                        <button class="color" data-price="3.5" data-color="Black">€ 3.5</button>
+                        <button class="colorthree" data-price="2.5" data-color="Natural">€ 2.5</button><button class="colorthree" data-price="3.5" data-color="Gold">€ 3.5</button>
+                        <button class="colorthree" data-price="3.5" data-color="Black">€ 3.5</button>
                     </div>
                 </div>
                 <div class="product">
@@ -691,9 +688,9 @@
                 <div class="popup-header">
                     <img id="popup-product-image" class="popup-product-image" src="" alt="Product Image" />
                     <div class="popup-text">
-                        <h2>Selecione as medidas:</h2>
                         <p class="popup-product-name"></p>
                         <p class="popup-color"></p>
+                        <h2>Selecione as medidas:</h2>
                     </div>
                 </div>
                 <div class="popup-sizes"></div>
@@ -704,7 +701,7 @@
             <h2>Resumo da Compra</h2>
 <div id="cart"></div>
 <span id="shipping">Frete: € 21.0</span>
-<p id="total-label">Total: €<span id="total">0</span></p>
+<p id="total-label">Total: € <span id="total">0</span></p>
 
             <div id="buttonContainer">
                 <button id="copyButton"><i class="fas fa-copy"></i> Copiar</button>
@@ -729,6 +726,6 @@
                 </div>
             </div>
         </footer>
-        <script src="https://zRAMONz.github.io/My-Piericing/site.js"></script>
+        <script src="site (1).js"></script>
     </body>
 </html>
