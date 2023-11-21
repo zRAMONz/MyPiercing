@@ -215,27 +215,71 @@ function openPopup(e) {
     h.appendChild(B);
  closePopup();
 }
-function updatePurchaseSummaries() {
-  var original = document.getElementById("purchaseSummary");
-  var clone = document.getElementById("purchaseSummaryClone");
+function addCloseButtonToCart(clone) {
+    console.log('Adicionando botão de fechar ao carrinho'); // Log para identificar se a função é chamada
+    if (!clone.querySelector('.close-cart-button')) {
+        console.log('Criando botão de fechar'); // Log para identificar se entrou na condição
+        var closeButton = document.createElement('button');
+        closeButton.innerHTML = 'X';
+        closeButton.className = 'close-cart-button';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '10px';
+        closeButton.style.zIndex = '1000';
+        closeButton.addEventListener('click', function() {
+            console.log('Botão de fechar clicado'); // Log para identificar se o evento de clique é acionado
+            clone.style.display = 'none';
+        });
 
-  if (clone) {
-      // Substitua o conteúdo do clone pelo conteúdo atualizado do original
-      clone.innerHTML = original.innerHTML;
-      // Reatribua event listeners aos botões no clone, se necessário
-      reassignEventListeners(clone);
+        clone.appendChild(closeButton);
+    } else {
+        console.log('Botão de fechar já existe'); // Log para caso o botão já exista
+    }
+}
+
+function updatePurchaseSummaries() {
+    console.log('Atualizando resumo da compra'); // Log para identificar se a função é chamada
+    var original = document.getElementById("purchaseSummary");
+    var clone = document.getElementById("purchaseSummaryClone");
+
+    if (clone) {
+        console.log('Clonando o conteúdo do carrinho original'); // Log para identificar se entrou na condição
+        clone.innerHTML = original.innerHTML;
+        reassignEventListeners(clone);
+
+        addCloseButtonToCart(clone);
+    } else {
+        console.log('Clone do carrinho não encontrado'); // Log para caso o clone não seja encontrado
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  addCloseButtonToPurchaseSummary();
+});
+
+function addCloseButtonToPurchaseSummary() {
+  var purchaseSummary = document.getElementById('purchaseSummary');
+  if (purchaseSummary && !purchaseSummary.querySelector('.close-purchase-summary')) {
+      var closeButton = document.createElement('button');
+      closeButton.innerHTML = 'X';
+      closeButton.className = 'close-purchase-summary';
+      closeButton.style.position = 'absolute';
+      closeButton.style.top = '10px';
+      closeButton.style.right = '10px';
+      closeButton.style.zIndex = '1000';
+      closeButton.style.display = 'none'; // Inicialmente escondido
+      closeButton.addEventListener('click', function() {
+          purchaseSummary.classList.remove("show-purchaseSummary");
+          closeButton.style.display = 'none'; // Esconde o botão de fechar
+      });
+
+      purchaseSummary.appendChild(closeButton);
   }
 }
 
-function reassignEventListeners(clone) {
-  // Exemplo: Reatribuir event listener para botões de remover do carrinho
-  var removeButtons = clone.querySelectorAll(".remove-button");
-  removeButtons.forEach(button => {
-      button.addEventListener("click", removeFromCart);
-  });
 
-  // Faça o mesmo para outros botões como copiar texto, enviar por WhatsApp, etc.
-}
+
+// Outras funções como reassignEventListeners, removeFromCart, etc.
+
  
   function removeFromCart(e) {
     var t = e.target.parentNode,
@@ -344,7 +388,16 @@ document.getElementById("copyButton").addEventListener("click", function () {
     }
     return item.value;
   }
-  document.getElementById("cartButton").addEventListener("click", function() {
-    var purchaseSummary = document.getElementById("purchaseSummary");
-    purchaseSummary.classList.toggle("show-purchaseSummary");
+// Listener para o botão do carrinho
+document.getElementById("cartButton").addEventListener("click", function() {
+  var purchaseSummary = document.getElementById("purchaseSummary");
+  var closeButton = purchaseSummary.querySelector('.close-purchase-summary');
+  purchaseSummary.classList.toggle("show-purchaseSummary");
+
+  // Alterar a visibilidade do botão de fechar com base na classe 'show-purchaseSummary'
+  if (purchaseSummary.classList.contains('show-purchaseSummary')) {
+      closeButton.style.display = 'block';
+  } else {
+      closeButton.style.display = 'none';
+  }
 });
