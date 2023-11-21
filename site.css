@@ -2,7 +2,7 @@
 .cart-button {
     position: fixed;
     right: 10px;
-    bottom: 10px;
+    bottom: 14px;
     background-color: #00c4c4;
     color: #ffffff;
     border-radius: 50%;
@@ -24,11 +24,11 @@
     transition: background-color 0.5s; /* Adiciona uma transição suave para a mudança de cor */
 }
 .fas.fa-shopping-cart {
-    margin-right: 0;
+    margin-right: 2px;
 }
 /* Classe para mudar a cor para amarelo */
 .cart-button.yellow {
-    background-color: #00c4c4;
+    background-color: #0af3f3;
     color: #ffffff; /* Muda a cor do texto, se necessário */
 }
 
@@ -420,7 +420,7 @@ button.color {
     background-color: darkred;
 }
 button:focus {
-    background-color: #ffffff;
+    background-color: #00c4c4;
 }
 header h1 {
     color: #303030;
@@ -1476,3 +1476,31 @@ flex-wrap: wrap;
     .bpw-floating-button {
         background-color: #00c4c4!important;
     }
+    /* Animação do carrinho */
+@keyframes slideIn {
+    from {
+        right: -100%; /* Começa fora da tela */
+    }
+    to {
+        right: 0; /* Termina alinhado com a borda direita da tela */
+    }
+}
+
+.cart-slide-in {
+    animation: slideIn 0.5s forwards; /* Animação com duração de 0.5 segundos */
+}
+
+.close-purchase-summary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+margin-left: auto;
+background-color: #000000;
+color: rgb(0, 0, 0);
+padding: 7px 10px;
+cursor: pointer;
+border: 1px solid #d5d5d5;
+margin: 0;
+font-size: 12px;
+font-weight: 600;
+}
