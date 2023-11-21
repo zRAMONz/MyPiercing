@@ -3,8 +3,8 @@
     position: fixed;
     right: 10px;
     bottom: 10px;
-    background-color: #ffffff;
-    color: #00c4c4;
+    background-color: #00c4c4;
+    color: #ffffff;
     border-radius: 50%;
     width: 50px;
     height: 58px;
@@ -14,8 +14,8 @@
     align-items: center;
     justify-content: center;
     background-image: none;
-    z-index: 9999;
     box-shadow: 0px 0px 13px 0px #00c4c4;
+    z-index: 20;
 }
 
 /* Estilo do botão de carrinho */
@@ -511,6 +511,7 @@ button.color:focus:active {
     background-image: linear-gradient(90deg, #dffafa 0%, #e8ffff 55%, #dffafa 100%);
     padding: 0 10px;
     box-shadow: -3px 0px 20px 0px #00000085;
+    z-index: 19;
 }
 @media (max-width: 678px) {
 .bpw-powered {
